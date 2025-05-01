@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploaded Files</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1f2235, #151829);
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #24263a;
+            padding: 20px 40px;
+            font-size: 1.5rem;
+            color: #00ffcc;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        main {
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #00ffcc;
+            padding-bottom: 10px;
+            text-shadow: 0 0 3px #00ffcc;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #2d304b;
+            border: 1px solid #3d3f5c;
+            margin-bottom: 12px;
+            padding: 15px 20px;
+            border-radius: 6px;
+            transition: transform 0.2s, background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        li:hover {
+            background-color: #3a3d5e;
+            transform: translateX(5px);
+        }
+
+        li::before {
+            content: '📄';
+            font-size: 1.2rem;
+        }
+
+        a {
+            color: #00ffcc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #00ddb0;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .back-link a {
+            background-color: #00ffcc;
+            color: #151829;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+
+        .back-link a:hover {
+            background-color: #00ddb0;
+        }
+
+        @media (max-width: 600px) {
+            main {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        📂 Uploaded Files Dashboard
+    </header>
+    <main>
+        <h1>Uploaded Files</h1>
+        <ul>
+            {% for file in files %}
+                <li><a href="{{ file }}" target="_blank">{{ file }}</a></li>
+            {% endfor %}
+        </ul>
+        <div class="back-link">
+            <a href="/">⬅ Upload More Files</a>
+        </div>
+    </main>
+</body>
+</html>
